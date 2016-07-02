@@ -50,6 +50,13 @@ public class BooksFetcher extends AsyncTask<String, Void, ArrayList<Book>> {
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
+            int responseCode = conn.getResponseCode();
+
+            Log.d(LOG, "Status Code is: " + responseCode);
+
+            if (responseCode < 200 || responseCode >= 300) {
+                return null;
+            }
 
             InputStream is = conn.getInputStream();
             StringBuilder sb = new StringBuilder();
@@ -100,6 +107,7 @@ public class BooksFetcher extends AsyncTask<String, Void, ArrayList<Book>> {
         super.onPostExecute(books);
     }
 
+
     private ArrayList<Book> parseJSON(String jsonString) {
 
         ArrayList<Book> books = new ArrayList<>();
@@ -110,6 +118,13 @@ public class BooksFetcher extends AsyncTask<String, Void, ArrayList<Book>> {
             JSONArray items = json.getJSONArray("items");
 
             for (int i = 0; i < items.length(); i++) {
+
+                int totalItems = json.getInt("totalItems");
+
+                if (totalItems == 0) {
+                    return null;
+                }
+
 
                 JSONObject item = items.getJSONObject(i);
                 JSONObject volumeInfo = item.getJSONObject("volumeInfo");
