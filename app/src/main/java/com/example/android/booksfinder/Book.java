@@ -17,7 +17,7 @@ public class Book {
      * @param authors list of authors
      * @param publishedDate year the book was published
      */
-    public Book(String title, ArrayList<String> authors, String publishedDate) {
+    public Book(String title, String publishedDate, ArrayList<String> authors) {
 
         this.title = title;
         this.authors = authors;
@@ -34,18 +34,6 @@ public class Book {
 
     public ArrayList<String> getAuthors() {
         return authors;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthors(ArrayList<String> authors) {
-        this.authors = authors;
-    }
-
-    public void setPublishedDate(String publishedDate) {
-        this.publishedDate = publishedDate;
     }
 
     public String getAuthorsString() {

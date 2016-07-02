@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BooksFinder</string>
+    <string name="no_books">Couldn\'t get books, try again later!</string>
+    <string name="bad_query">Couldn\'t find books, please use another search term</string>
+    <string name="invalid_page">Unable to retrieve web page. URL may be invalid.</string>
+    <string name="can_not_parse_json">Unable to parse JSON from URL</string>
 </resources>

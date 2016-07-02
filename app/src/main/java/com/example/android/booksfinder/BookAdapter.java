@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- *
  * Created by omar on 7/2/16.
  */
 public class BookAdapter extends ArrayAdapter<Book> {
@@ -34,8 +33,22 @@ public class BookAdapter extends ArrayAdapter<Book> {
         TextView publishedDateTextView = (TextView) listItemView.findViewById(R.id.publishedDateTextView);
 
         titleTextView.setText(currentBook.getTitle());
-        authorsTextView.setText(currentBook.getAuthorsString());
-        publishedDateTextView.setText(currentBook.getPublishedDate());
+
+        if (currentBook.getAuthors() == null || currentBook.getAuthors().size() == 0) {
+            authorsTextView.setVisibility(View.GONE);
+        } else {
+            if (currentBook.getAuthors().size() == 1) {
+                authorsTextView.setText("Author: " + currentBook.getAuthorsString());
+            } else {
+                authorsTextView.setText("Authors: " + currentBook.getAuthorsString());
+            }
+        }
+
+        if (currentBook.getPublishedDate() == null || currentBook.getPublishedDate().length() == 0) {
+            publishedDateTextView.setVisibility(View.GONE);
+        } else {
+            publishedDateTextView.setText("Published at: " + currentBook.getPublishedDate());
+        }
 
         return listItemView;
     }

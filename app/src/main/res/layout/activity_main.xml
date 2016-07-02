@@ -18,26 +18,24 @@
             android:singleLine="true"
             android:clickable="true"
             android:focusableInTouchMode="true"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
+            android:imeOptions="actionSearch"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:hint="Search Books" />
 
-        <Button
-            android:id="@+id/searchButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Search" />
-
     </LinearLayout>
 
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ListView
+        android:id="@+id/listView"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:drawSelectorOnTop="true"
         android:orientation="vertical"
         tools:listitem="@layout/list_item"/>
+
+
 
 
 </LinearLayout>
